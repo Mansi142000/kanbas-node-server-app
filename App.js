@@ -9,7 +9,9 @@ import AssignmentRoutes from "./Kanbas/Assignments/routes.js";
 import UserRoutes from "./Users/routes.js";
 import session from "express-session";
 import "dotenv/config";
-const CONNECTION_STRING = "mongodb+srv://Mansinegi14:Mneg1234567890!@kanbas.ty8bc.mongodb.net/?retryWrites=true&w=majority&appName=Kanbas";
+
+//                         mongodb+srv://Mansinegi14:<password>     @kanbas.ty8bc.mongodb.net/?retryWrites=true&w=majority&appName=Kanbas
+const CONNECTION_STRING = "mongodb+srv://Mansinegi14:Mneg1234567890!@kanbas.ty8bc.mongodb.net/Kanbas?retryWrites=true&w=majority&appName=Kanbas";
 mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(
@@ -18,6 +20,7 @@ app.use(
     origin: process.env.NETLIFY_URL || "http://localhost:3000",
   })
 );
+app.use(express.json());
 const sessionOptions = {
   secret: process.env.SESSION_SECRET || "kanbas",
   resave: false,
@@ -33,8 +36,6 @@ if (process.env.NODE_ENV !== "development") {
 }
 app.use(session(sessionOptions));
 
-app.use(session(sessionOptions));
-app.use(express.json());
 UserRoutes(app);
 CourseRoutes(app);
 ModuleRoutes(app);
