@@ -18,6 +18,7 @@ app.use(
     origin: process.env.NETLIFY_URL || "http://localhost:3000",
   })
 );
+app.use(express.json());
 const sessionOptions = {
   secret: process.env.SESSION_SECRET || "kanbas",
   resave: false,
@@ -33,8 +34,7 @@ if (process.env.NODE_ENV !== "development") {
 }
 app.use(session(sessionOptions));
 
-app.use(session(sessionOptions));
-app.use(express.json());
+
 UserRoutes(app);
 CourseRoutes(app);
 ModuleRoutes(app);
