@@ -9,7 +9,7 @@ import AssignmentRoutes from "./Kanbas/Assignments/routes.js";
 import UserRoutes from "./Users/routes.js";
 import session from "express-session";
 import "dotenv/config";
-const CONNECTION_STRING = "mongodb+srv://Mansinegi14:Mneg1234567890!@kanbas.ty8bc.mongodb.net/?retryWrites=true&w=majority&appName=Kanbas";
+const CONNECTION_STRING = "mongodb+srv://Mansinegi14:Mneg1234567890!@kanbas.ty8bc.mongodb.net/Kanbas?retryWrites=true&w=majority&appName=Kanbas";
 mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(
